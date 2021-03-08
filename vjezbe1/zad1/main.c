@@ -1,4 +1,8 @@
 #include <stdio.h>
+void printResult(int c)
+{
+	printf("Result: %d, c")
+}
 int main() 
 {
 	int a=5;
@@ -9,7 +13,7 @@ int main()
 		c=a-b;
 	else
 		c=b-a
-	printf("Result: %d \n", c);
+	printResult(c);
 
    return 0;
 }
