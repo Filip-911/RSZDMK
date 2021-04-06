@@ -82,13 +82,5 @@ void SetChannel(unsigned char channel)
 void RunConversion()
 {
 	SetBit(ADCSRA, 6);
-	while(0);
-	ClearBit(ADCSRA, 6);
+	while(!CheckBit(ADCSRA, 6));
 }
-/*
- * pitanja: Koliko dugo cekam da se zavrsi konverzija, da li ja radim konverziju ?
- * Cemu sluze setvref i setpresc
- * Da li reference i division factor pisemo sve vrijednosti
- * single conversion mod ?
- * Da li su kanali razlicite prom u koje ubacujemo rezultat ?
- */
