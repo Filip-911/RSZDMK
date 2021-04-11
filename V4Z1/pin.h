@@ -26,7 +26,7 @@
 /// Makro za selektovanje porta D
 #define PORT_D 2
 /// Makro za selektovanje pina na koji je povezana dioda
-#define DIODE_PIN 3
+#define DIODE_PIN 5
 
 /// Makro za brzu periodu
 #define FAST 800

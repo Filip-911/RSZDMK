@@ -16,30 +16,24 @@
 int main()
 {
 
-	while (1)
-	{
 	InitADC(1,9);
 	SetEnable(1);
 
 	SetChannel(2);
-	RunConversion();
-	uint rez = ReadADC(2);
 
-	InitRand(rez);
-	uint brojTreptaja = RandRange(2,8);
-
+	uint brojTreptaja = RandRange(4,8);
 
 	// Inicijalizacija
-	pinInit(PORT_B, DIODE_PIN, OUTPUT);
 	timer0InteruptInit();
+	pinInit(PORT_B, DIODE_PIN, OUTPUT);
 
 	pinPulsing(PORT_B, DIODE_PIN, FAST, brojTreptaja);
-
-	while(1);
-
+	while (1)
+	{
+		RunConversion();
+		uint rez = ReadADC(2);
+		InitRand(rez);
 	}
-
-
 
 return 0;
 }
