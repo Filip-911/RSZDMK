@@ -28,6 +28,7 @@ int main()
 	pinInit(PORT_B, DIODE_PIN, OUTPUT);
 
 	pinPulsing(PORT_B, DIODE_PIN, FAST, brojTreptaja);
+
 	while (1)
 	{
 		RunConversion();
@@ -35,6 +36,6 @@ int main()
 		InitRand(rez);
 	}
 
-return 0;
+	return 0;
 }
 
