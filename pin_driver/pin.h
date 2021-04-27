@@ -38,19 +38,6 @@
 #define SLOW_REPETITIONS 3
 
 /**
- * pinPulse - Funkcija koja implementiran podizanje i spustanje vrednosti na
-pinu
- * odgovarajucom brzinom
- * @param port - ulaz tipa unsigned char - Port na kojem je potrebno
-implementirati funkcionalnost
- * @param pin - ulaz tipa unsigned char - Pin na kojem je potrebno
-implementirati funkcionalnost
- * @param period - ulaz tipa unsigned long - Perioda promene vrednosti na
-pinu
- * @return Nema povratnu vrednost
- */
-void pinPulse(unsigned char port, unsigned char pin, unsigned long period);
-/**
  * calculateHalfPeriod - Funkcija koja racuna polovinu periode treptanja
  * @param period - ulaz tipa unsigned long - Perioda promene vrednosti na
 pinu
@@ -82,13 +69,6 @@ inicijalizovati pin
  */
 void pinInit(unsigned char port, unsigned char pin, unsigned char direction);
 
-/**
- *
- * @param port - Koji od portova zelimo da aktiviramo
- * @param pin - Koji od pinova na tom portu ce pulsirati
- * @param period - Kolika je perioda pulsiranja
- * @param num_of_repetitions - Broj treptaja diode
- */
-void pinPulsing(int port, int pin, unsigned long period, int num_of_repetitions);
+
 
 #endif /* PIN_H_ */

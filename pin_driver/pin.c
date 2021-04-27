@@ -1,16 +1,6 @@
 
 #include "pin.h"
 
-/***********************************************************************/
-void pinPulse(unsigned char port, unsigned char pin, unsigned long period)
-{
-	// Poluperioda u kojoj pin ima visoku vrednost
-	pinSetValue(port, pin, HIGH);
-	timer0DelayMs(calculateHalfPeriod(period));
-	// Poluperioda u kojoj pin ima nisku vrednost
-	pinSetValue(port, pin, LOW);
-	timer0DelayMs(calculateHalfPeriod(period));
-}
 /********************************************************************/
 void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 {
@@ -65,12 +55,7 @@ void pinInit(unsigned char port, unsigned char pin, unsigned char direction)
 		break;
 	}
 }
-/********************************************************************/
-void pinPulsing(int port, int pin, unsigned long period, int num_of_repetitions)
-{
-	for(unsigned char i = 0; i < num_of_repetitions; i++)
-		pinPulse(PORT_B, DIODE_PIN, period);
-}
+
 /********************************************************************/
 unsigned long calculateHalfPeriod(unsigned long period)
 {
