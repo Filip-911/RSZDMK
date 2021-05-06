@@ -11,8 +11,6 @@
 #include <util/delay.h>
 #include <avr/pgmspace.h>
 
-typedef uint8_t unt;
-
  void operation (char op, int b1, int b2);
 
 int main()
@@ -20,7 +18,7 @@ int main()
 	usartInit(9600);
 	char op, broj1[15] , broj2[15], prob[50];
 	int ibroj1, ibroj2;
-	unt p=0;
+	uint8_t p=0;
 	char c;
 
 	while(1)
