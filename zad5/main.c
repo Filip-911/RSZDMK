@@ -40,7 +40,7 @@ int main()
 			c=usartGetChar();
 			broj1[p++]=c;
 		}
-		while( c >= '9' && c <= '0');
+		while( c <= '9' && c >= '0');
 
 		broj1[p]='\0';
 
@@ -50,7 +50,7 @@ int main()
 		sprintf(prob, "broj1 : %d", ibroj1);
 		usartPutString(prob);
 
-		op = usartGetChar();
+		op = c;
 		usartPutString_P(PSTR("\r \n"));
 
 		sprintf(prob, "op : %c", op);
@@ -64,7 +64,7 @@ int main()
 			c=usartGetChar();
 			broj2[p++]=c;
 		}
-		while( c >= '9' && c <= '0');
+		while( c <= '9' && c >= '0');
 
 		broj2[p]='\0';
 
@@ -87,24 +87,24 @@ int main()
 void operation (char op, int b1, int b2)
 {
 	char rezs[50];
-	double rez;
+	int rez;
 
 	switch (op)
 			{
 			case '*':
-				rez = (double)b1*(double)b2;
+				rez = b1*b2;
 				break;
 			case '/':
-				rez = (double)b1/(double)b2;
+				rez = b1/b2;
 				break;
 			case '+':
-				rez = (double)b1+(double)b2;
+				rez = b1+b2;
 				break;
 			case '-':
-				rez = (double)b1-(double)b2;
+				rez = b1-b2;
 				break;
 			}
 
-		sprintf(rezs, "Rezultat : %lf ", rez);
+		sprintf(rezs, "Rezultat : %d ", rez);
 		usartPutString(rezs);
 }
