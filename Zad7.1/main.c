@@ -18,7 +18,7 @@ int main ()
 {
 	usartInit(9600);
 	char ime1[20],ime[20], pw[20], dobro[50];
-	char prob= "Charlie", loz= 'asdf';
+	const char prob [10] = "Charlie", loz [10]= "asdf";
 
 	while (1)
 	{
@@ -34,9 +34,10 @@ int main ()
 			usartGetString(ime);
 		}
 
-		while(strcmp("", ime1));
+		while(strcmp(prob, ime));
 
 		usartPutString_P(PSTR("Sifra : "));
+		usartPutString_P(PSTR("\r \n"));
 
 
 		while (!usartAvailable())
@@ -44,7 +45,7 @@ int main ()
 		_delay_ms(20);
 		usartGetString(pw);
 
-		if(!strcmp("asdf",pw))
+		if(!strcmp(loz,pw))
 		{
 			sprintf(dobro, "Dobrodosao %s", ime);
 			usartPutString_P(PSTR("\r \n"));
