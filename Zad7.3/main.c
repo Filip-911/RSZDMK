@@ -19,7 +19,7 @@ int main ()
 {
 	usartInit(9600);
 	char broj [50], suma [20], c ;
-	int rez=0, a [50];
+	int rez=0 ;
 	uint8_t p=0;
 
 	while(1)
@@ -45,7 +45,6 @@ int main ()
 			usartPutString_P(PSTR("\r \n"));
 			sprintf(suma, "suma : %d", rez);
 			usartPutString(suma);
-
 	}
 
 	return 0;
