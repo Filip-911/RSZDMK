@@ -12,12 +12,14 @@
 #include <avr/pgmspace.h>
 
 typedef uint8_t unt;
-double operation (char op, char b1,char b2);
+
+double operation (char op, int b1, int b2);
 
 int main()
 {
 	usartInit(9600);
-	char op, broj1[15] , broj2[15];
+	char op, broj1[15] , broj2[15], rezs[50];
+	int ibroj1, ibroj2;
 	double rez=0;
 
 	while(1)
@@ -29,8 +31,7 @@ int main()
 		while(!usartAvailable())
 			;
 
-		unt len=usartAvailable();
-				_delay_ms(100);
+		_delay_ms(20);
 
 		unt p=0;
 
@@ -41,37 +42,41 @@ int main()
 			broj1[p++]=usartGetChar();
 		}
 
-		broj1[p]='0';
+		broj1[p]='\0';
+		ibroj1 = atoi(broj1);
 
 		op = usartGetChar();
 
 		p =0;
 
 		broj2[p++]=usartGetChar();
+
 		while (broj2[p] <= '9' && broj2[p] >= '0')
-				{
-					broj2[p++]=usartGetChar();
-				}
+		{
+			broj2[p++]=usartGetChar();
+		}
+		broj2[p]='\0';
 
-		broj2[p]='0';
+		ibroj2 = atoi(broj2);
 
-		rez = operation(op, broj1, broj2);
+		rez = operation(op, ibroj1, ibroj2);
 
-		usartPutString_P(PSTR("Rezultat :"));
-		printf("%lf", rez);
+		sprintf(rezs, "Rezultat : %lf ", rez);
+
+		usartPutString(rezs);
 		usartPutString_P(PSTR("\r \n"));
 	}
 
 	return 0;
 }
-double operation (char op, char b1,char b2)
+double operation (char op, int b1, int b2)
 {
 	switch(op)
 			{
 			case '*':
 				return b1*b2;
 			case '/':
-				return b1/b2;
+				return (double)b1/b2;
 			case '+':
 				return b1+b2;
 			case '-':
