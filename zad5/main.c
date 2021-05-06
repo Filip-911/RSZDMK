@@ -20,6 +20,8 @@ int main()
 	usartInit(9600);
 	char op, broj1[15] , broj2[15], prob[50];
 	int ibroj1, ibroj2;
+	unt p=0;
+	char c;
 
 	while(1)
 	{
@@ -32,17 +34,15 @@ int main()
 
 		_delay_ms(20);
 
-		char c;
-		unt p=0;
+		p=0;
+		do
+		{
+			c=usartGetChar();
+			broj1[p++]=c;
+		}
+		while( c >= '9' && c <= '0');
 
-				broj1[p++]=usartGetChar();
-
-				while (broj1[p] <= '9' && broj1[p] >= '0')
-				{
-					broj1[p++]=usartGetChar();
-				}
-
-				broj1[p]='\0';
+		broj1[p]='\0';
 
 
 		ibroj1 = atoi(broj1);
