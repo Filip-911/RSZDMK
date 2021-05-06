@@ -34,7 +34,7 @@ int main ()
 			usartGetString(ime);
 		}
 
-		while(!strcmp(prob, ime1));
+		while(strcmp("", ime1));
 
 		usartPutString_P(PSTR("Sifra : "));
 
