@@ -18,7 +18,7 @@ int main ()
 {
 	usartInit(9600);
 
-	char rijec [50], niz [50];
+	char rijec [50] , niz [50], prob [50] = "Charlie";
 	uint8_t rez = 0;
 	char sort = '1', a, b;
 
@@ -30,16 +30,13 @@ int main ()
 		while(!usartAvailable());
 		_delay_ms(50);
 
-		uint8_t duzina = usartGetString(rijec);
+		 uint8_t duzina = usartGetString(rijec);
 
-		for(uint8_t i=0 ; i < duzina ; i++)
+		for(uint8_t i=0 ; i < 6 ; i++)
 		{
-			a=rijec[i];
-			b=rijec[i+1];
 
-			if( a > b )
+			if( prob[i]  < prob[i+1] )
 				sort = '0';
-
 		}
 
 		sprintf( niz , "Rijec : %s", rijec );
