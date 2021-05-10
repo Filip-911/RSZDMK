@@ -8,6 +8,8 @@
 
 volatile unsigned char intCount  = 0; // broji blokove od 10us
 
+uint8_t duty=0; //prag
+
 
 void timer0InterruptInit () // generise prekid svakih 10us
 {
@@ -72,6 +74,16 @@ void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 	}
 }
 
+uint8_t getDuty()
+{
+	return duty;
+}
+
+void incDuty ()
+{
+	duty++;
+}
+
 unsigned char getIntCount()
 {
 	return intCount;
@@ -80,4 +92,9 @@ unsigned char getIntCount()
 ISR (TIMER0_COMPA_vect)
 {
 	intCount++;
+
+	if (intCount <= duty)
+		pinSetValue(PORT_D, 5, 0);
+	else
+		pinSetValue(PORT_D, 5, 1);
 }

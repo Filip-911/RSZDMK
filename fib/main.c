@@ -18,7 +18,7 @@ int main ()
 	timer0InterruptInit();
 	pinInit( PORT_D, 5, OUTPUT);
 
-	uint8_t tmp, duty=0, perioda = 0 ;
+	uint8_t tmp, perioda = 0 ;
 	unsigned char count;
 
 	while(1)
@@ -31,14 +31,7 @@ int main ()
 		tmp = perioda;
 
 		if (perioda - tmp >= 3)  // ako su prosle 3 periode povecavamo faktor ispune
-			duty++;
-
-		count = getIntCount();
-
-		if (count <= duty)
-			pinSetValue(PORT_B, 5, 0);
-		else
-			pinSetValue(PORT_B, 5, 1);
+			incDuty();
 	}
 
 	return 0;
