@@ -6,7 +6,7 @@
  */
 #include "utils.h"
 
-volatile unsigned char desetka = 0; // broji blokove od 10us
+volatile unsigned char intCount  = 0; // broji blokove od 10us
 
 
 void timer0InterruptInit () // generise prekid svakih 10us
@@ -72,8 +72,12 @@ void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 	}
 }
 
+unsigned char getIntCount()
+{
+	return intCount;
+}
+
 ISR (TIMER0_COMPA_vect)
 {
-	desetka++;
-
+	intCount++;
 }

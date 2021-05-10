@@ -20,7 +20,7 @@
 
 #define AMPLITUDA 1
 
-volatile unsigned char desetka;
+volatile unsigned char intCount ;
 
 /**
  * Funkcija za inicijalizaciju tamjera da generise prekid svakih 10us
@@ -38,5 +38,8 @@ void timer0InterruptInit ();
 void pinInit(char port, char pin, char dir);
 
 void pinSetValue ( unsigned char port, unsigned char pin, unsigned char value );
+
+unsigned char getIntCount();
+
 
 #endif /* UTILS_H_ */

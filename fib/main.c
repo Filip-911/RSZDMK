@@ -17,24 +17,28 @@ int main ()
 	usartInit(9600);
 	timer0InterruptInit();
 	pinInit( PORT_D, 5, OUTPUT);
-	uint8_t value, duty_cycle, tmp, i=0, perioda = 0 ;
+
+	uint8_t tmp, duty=0, perioda = 0 ;
+	unsigned char count;
 
 	while(1)
 	{
-		while(desetka)
+		while (getIntCount())
 			;
+
 		perioda++;
 
 		tmp = perioda;
 
 		if (perioda - tmp >= 3)  // ako su prosle 3 periode povecavamo faktor ispune
-			i++;
+			duty++;
 
-		duty_cycle = i/255;
+		count = getIntCount();
 
-		value = AMPLITUDA * duty_cycle;
-
-		pinSetValue(PORT_D, 5, value);
+		if (intCount <= duty)
+			pinSetValue(PORT_B, 5, 0);
+		else
+			pinSetValue(PORT_B, 5, 1);
 	}
 
 	return 0;
