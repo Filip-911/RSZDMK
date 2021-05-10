@@ -24,10 +24,10 @@ unsigned long timer0DelayMs(unsigned long delay_length)
  */
 void timer0InteruptInit()
 {
-	// Inicijalizacija tajmera 0 tako da perioda prekida bude 1ms
+	// Inicijalizacija tajmera 0 tako da perioda prekida bude 10us
 	TCCR0A = 0x02;
-	TCCR0B = 0x03;
-	OCR0A = 249;
+	TCCR0B = 0x01;
+	OCR0A = 159;
 	TIMSK0 = 0x02;
 	// Podesavanje globalne dozvole prekida
 	sei();

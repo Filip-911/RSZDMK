@@ -74,11 +74,6 @@ void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 	}
 }
 
-uint8_t getDuty()
-{
-	return duty;
-}
-
 void incDuty ()
 {
 	duty++;

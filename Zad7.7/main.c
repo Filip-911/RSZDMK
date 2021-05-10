@@ -12,9 +12,10 @@
 #include <avr/pgmspace.h>
 #include <string.h>
 
-uint8_t odaberi (char c, char r [20]);
+void odaberi (char c, char r [20]);
 void slovo (char r [20]);
 void makni_razmake(char r [20]);
+void ukloni_duplikate(char r[20]);
 
 int main ()
 
@@ -55,7 +56,7 @@ int main ()
 	return 0;
 }
 
-uint8_t odaberi(char c, char r [20])
+void odaberi(char c, char r [20])
 {
 	switch (c)
 	{
@@ -115,7 +116,7 @@ void makni_razmake(char r [20])
 	char ispis [20], novistr [20];
 	uint8_t c=0, i=0;
 
-	while (r[c] != 0)
+	while (r[c] != '\0')
 	{
 		if(r[c] != ' ')
 		{
@@ -126,8 +127,14 @@ void makni_razmake(char r [20])
 	}
 
 	novistr[i] = '\0';
-
 	sprintf(ispis, "String bez razmaka : %s", novistr);
 			usartPutString(ispis);
+
+}
+
+void ukloni_duplikate(char r[20])
+{
+
+
 
 }

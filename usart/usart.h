@@ -4,7 +4,7 @@
  * @author	Milan Lukic
  * @date	14-04-2019
  */
-
+#include <stdint.h>
 #ifndef USART_H_
 #define USART_H_
 
@@ -53,5 +53,6 @@ char usartGetChar();
  * @return broj ocitanih karaktera
  */
 unsigned char usartGetString(char *s);
+
 
 #endif /* USART_H_ */
