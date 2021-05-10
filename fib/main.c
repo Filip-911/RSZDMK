@@ -35,7 +35,7 @@ int main ()
 
 		count = getIntCount();
 
-		if (intCount <= duty)
+		if (count <= duty)
 			pinSetValue(PORT_B, 5, 0);
 		else
 			pinSetValue(PORT_B, 5, 1);
