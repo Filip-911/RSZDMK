@@ -10,18 +10,14 @@
 #include <stdio.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
-
 #include "utils.h"
 
-
 int main ()
-
 {
 	usartInit(9600);
 	timer0InterruptInit();
 	pinInit( PORT_D, 5, OUTPUT);
-	uint8_t value, duty_cycle, tmp;
-	unsigned char i=0, perioda = 0 ;
+	uint8_t value, duty_cycle, tmp, i=0, perioda = 0 ;
 
 	while(1)
 	{
@@ -39,7 +35,6 @@ int main ()
 		value = AMPLITUDA * duty_cycle;
 
 		pinSetValue(PORT_D, 5, value);
-
 	}
 
 	return 0;
