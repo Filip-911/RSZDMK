@@ -28,7 +28,6 @@ int main ()
 	{
 		usartPutString_P(PSTR("\r \n"));
 		usartPutString_P(PSTR("Unesite string : "));
-		usartPutString_P(PSTR("\r \n"));
 
 		while(!usartAvailable());
 		_delay_ms(50);
@@ -39,84 +38,71 @@ int main ()
 
 		usartPutString_P(PSTR("Izaberite opciju za modifikaciju unetog stringa: \r \n "));
 		usartPutString_P(PSTR("1. Slovo koje se najvise ponavlja? \r \n"));
-		usartPutString_P(PSTR("2. Ukloni sve ‘ ’ karaktere. \r \n "));
+		usartPutString_P(PSTR("2. Ukloni sve razmake. \r \n "));
 		usartPutString_P(PSTR("3. Ukloni sve duplikate karaktera. \r \n"));
 
 		while(!usartAvailable());
-		_delay_ms(50);
 
 		c = usartGetChar();
 
 		odaberi(c, string);
-
-
-
 	}
 
 	return 0;
 }
 
-void odaberi(char c, char r [20])
+void odaberi(char c, char primljeniString [20])
 {
 	switch (c)
 	{
 			case '1' :
-				slovo(r);
+				najfrekventijeSlovo(primljeniString);
 				break;
 			case '2' :
-				makni_razmake(r);
+				makni_razmake(primljeniString);
 				break;
+			case '3' :
+				ukloni_duplikate(primljeniString);
+				break;
+			default:
+				usartPutString_P("Invalid action, try again (: ");
 	}
-
 }
 
-void slovo(char r [20])
+void najfrekventijeSlovo(char r [20])
 {
-	uint8_t niz [20], counter, max, slovo;
-	char ispis [30];
+	uint8_t i=0, j, niz [20], count=1, max= 1, slovo;
+	char ispis [30], c;
 
-	for(uint8_t i =0 ; ; i++) 			//uzmem jedno slovo
+	c = r[i];
+
+	while (r[i])
+	{
+		j=i+1;
+
+		while (r[j])
 		{
-			if(r[i] == NULL)				// ako je dosao do kraja gotova provjera
-				break;
-
-			counter=0;							// brojac konkretnog slova da bude na nuli
-
-			for(uint8_t j =i+1 ; ; j++) 		//provjerava sva sledeca slova
-					{
-						if(r[j] == NULL)				// dok ne dodje do kraja
-							break;
-
-						if (r[i] - r[j] == 0 )
-							niz[i] = ++counter;		 // povecava brojac ako se desilo poklapanje
-
-					}
-
+			if (r[j] == r[i])
+				count++;
+			j++;
 		}
-		max=niz[0];
-		slovo=0;
-		for(uint8_t i=0 ; ; i++) 	//trazimo najveci broj u nizu
-		{
-			if(r[i] == NULL)				// ako je dosao do kraja gotova provjera
-				break;
+		if(count > max)
+			c = r[i];
 
-			if(niz[i] > max)		 //ako je naisao na neko slovo sa vise ponavljanja onda je to max
-			{
-				max=niz[i];
-				slovo=i;		// zapamti poziciju na kojoj se nalazi najvise ponavljanja
-			}
-		}
+		count = 1;
+		i++;
+	}
 
-		sprintf(ispis, "Najvise ponavljanja ima slovo : %c", r[slovo]);
+		sprintf(ispis, "Najvise ponavljanja ima slovo : %c", c);
 		usartPutString(ispis);
 }
 
 void makni_razmake(char r [20])
 {
-	char ispis [20], novistr [20];
+	char ispis [50], novistr [20];
 	uint8_t c=0, i=0;
 
-	while (r[c] != '\0')
+	while (r[c])
 	{
 		if(r[c] != ' ')
 		{
@@ -128,13 +114,35 @@ void makni_razmake(char r [20])
 
 	novistr[i] = '\0';
 	sprintf(ispis, "String bez razmaka : %s", novistr);
-			usartPutString(ispis);
+		usartPutString(ispis);
 
 }
 
-void ukloni_duplikate(char r[20])
+void ukloni_duplikate(char string[20])
 {
+	uint8_t i = 0, j, c=0, k=0,  duzina;
+	char ispis [50], novistr [20];
 
+	duzina = strlen(string);
 
+	novistr[0] = string[0];
 
+	for( ; i <duzina ; i++)
+	{
+		if(string[i])
+			novistr[c++] = string[i];
+
+		for (j=i+1 ; j < duzina; j++ )
+		{
+			if (string[i] == string[j])
+			{
+				string[j] = NULL;
+			}
+		}
+	}
+
+	novistr[c] = '\0';
+
+	sprintf(ispis, "String bez duplikata : %s", novistr);
+		usartPutString(ispis);
 }

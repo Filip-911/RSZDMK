@@ -1,12 +1,15 @@
-/*
- * utils.c
- *
- *  Created on: May 10, 2021
- *      Author: Korisnik
- */
+
+
+#include "../usart/usart.h"
+#include <stdio.h>
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <avr/interrupt.h>
+#include "util/delay.h"
 #include "utils.h"
 
-volatile unsigned char intCount  = 0; // broji blokove od 10us
+
+volatile uint8_t intCount  = 0; // broji blokove od 10us
 
 uint8_t duty=0; //prag
 
@@ -74,22 +77,7 @@ void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 	}
 }
 
-void incDuty ()
-{
-	duty++;
-}
-
-unsigned char getIntCount()
-{
-	return intCount;
-}
-
 ISR (TIMER0_COMPA_vect)
 {
 	intCount++;
-
-	if (intCount <= duty)
-		pinSetValue(PORT_D, 5, 0);
-	else
-		pinSetValue(PORT_D, 5, 1);
 }

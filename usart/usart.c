@@ -87,7 +87,7 @@ unsigned char usartGetString(char *s)
 {
 	unsigned char len = 0;
 
-	while(Rx_Buffer_Size) 			//ima karaktera u faferu?
+	while(Rx_Buffer_Size) 			//ima karaktera u baferu?
 		s[len++] = usartGetChar();	//ucitavanje novog karaktera
 
 	s[len] = 0;						//terminacija stringa
@@ -95,4 +95,42 @@ unsigned char usartGetString(char *s)
 }
 
 
+int8_t usartPeek()
+{
+	int8_t c;
 
+	if (!Rx_Buffer_Size)					// Bafer je prazan?
+		return -1;
+	c = Rx_Buffer[Rx_Buffer_First];			// Citanje karaktera iz prijemnog bafera
+											// Karakter se ne brise iz bafera
+
+	return c;
+}
+
+/******************************************************************************************/
+
+int16_t usartParseInt()
+{
+	int8_t c;
+	uint16_t res = 0;
+	int8_t sign = 1;
+
+	while ((usartPeek() < '0' && usartPeek() != '-') || usartPeek() > '9')
+	{
+		c = usartGetChar();					 // Citanje karaktera ukoliko nije broj
+	}
+
+	if(usartPeek() == '-')
+	{
+		c = usartGetChar();				     // Uzimanje u obzir da li je pozitivan ili negativan broj
+		sign = -1;
+	}
+
+	while (usartPeek() >= '0' && usartPeek() <= '9')
+	{
+		c = usartGetChar();
+		res = res * 10 + (c - '0'); 		// Pravljenje broja pomocu cifara koje su ocitane
+	}
+
+	return res * sign;
+}

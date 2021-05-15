@@ -6,21 +6,19 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include <avr/interrupt.h>
+#include "util/delay.h"
 ///makro za ..
 #define OUTPUT 1
 #define INPUT 0
-
+///
 #define PORT_B 0
 #define PORT_C 1
 #define PORT_D 2
+
 /// Makro za podesavanje visoke vrednosti signala na pinu
 #define HIGH 1
 /// Makro za podesavanje niske vrednosti signala na pinu
 #define LOW 0
-
-#define AMPLITUDA 1
-
-volatile unsigned char intCount ;
 
 /**
  * Funkcija za inicijalizaciju tamjera da generise prekid svakih 10us
@@ -36,7 +34,12 @@ void timer0InterruptInit ();
  * @param dir Smjer pina ( 1 za izlaz, 0 za ulaz)
  */
 void pinInit(char port, char pin, char dir);
-
+/**
+ *  Funkcija kjoa ..
+ * @param port port koji se selektuje za promjernu stanja
+ * @param pin
+ * @param value
+ */
 void pinSetValue ( unsigned char port, unsigned char pin, unsigned char value );
 
 unsigned char getIntCount();

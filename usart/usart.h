@@ -8,6 +8,8 @@
 #ifndef USART_H_
 #define USART_H_
 
+
+
 ///Velicina prijemnog bafera (mora biti 2^n)
 #define UART_BUFFER_SIZE 64
 
@@ -48,11 +50,30 @@ void usartPutString_P(const char *s);
 char usartGetChar();
 
 /**
+ *
+ *
+ * @return
+ */
+
+/**
  * Funkcija ocitava sve karaktere iz prijemnog bafera i od njih formira string.
  * @param s pokazivac na bafer u koji se smesta string
  * @return broj ocitanih karaktera
  */
 unsigned char usartGetString(char *s);
 
+/**
+ * Funkcija vraca sledeci neprocitani karakter iz prijemnog bafera, ali karakter ostaje u baferu
+ * Ukoliko je prijemni bafer prazan, vraca -1.
+ * @return ocitani karakter
+ */
+int8_t usartPeek();
+
+/**
+ * Funkcija ocitava prvi broj na koji naidje u baferu
+ * ukoliko je izmedju 2 broja bio neki drugi karakter, ostaju u baferu
+ * @return ocitani broj tipa int16_t
+ */
+int16_t usartParseInt();
 
 #endif /* USART_H_ */

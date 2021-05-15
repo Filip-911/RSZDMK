@@ -10,28 +10,34 @@
 #include <stdio.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <avr/interrupt.h>
+#include "util/delay.h"
 #include "utils.h"
 
 int main ()
+
 {
 	usartInit(9600);
-	timer0InterruptInit();
-	pinInit( PORT_D, 5, OUTPUT);
 
-	uint8_t tmp, perioda = 0 ;
-	unsigned char count;
+	char ispis [50];
+	int16_t broj ;
+	uint8_t rez=0;
 
 	while(1)
 	{
-		while (getIntCount())
-			;
+		usartPutString_P(PSTR("\r \n"));
+		usartPutString_P(PSTR("Unesite niz iz kojeg cemo uzeti broj :"));
 
-		perioda++;
+		while(!usartAvailable());
+		_delay_ms(50);
 
-		tmp = perioda;
+		broj = usartParseInt();
 
-		if (perioda - tmp >= 3)  // ako su prosle 3 periode povecavamo faktor ispune
-			incDuty();
+		usartPutString_P(PSTR("\r \n"));
+		sprintf( ispis , "Evo ga  : %d", broj );
+		usartPutString(ispis);
+		usartPutString_P(PSTR("\r \n"));
+
 	}
 
 	return 0;

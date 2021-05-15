@@ -1,3 +1,3 @@
-main.o main.o: ../main.c ../../vjezba4/timer0.h
+main.o main.o: ../main.c ../../usart/usart.h
 
-../../vjezba4/timer0.h:
+../../usart/usart.h:
