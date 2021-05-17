@@ -1,0 +1,168 @@
+\hypertarget{vjezba3_8c}{}\doxysection{vjezba3.\+c File Reference}
+\label{vjezba3_8c}\index{vjezba3.c@{vjezba3.c}}
+
+
+Aplikacija koja implementira ogranicen broj treptanja diode.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{vjezba3_8c_a5bb885982ff66a2e0a0a45a8ee9c35e2}\label{vjezba3_8c_a5bb885982ff66a2e0a0a45a8ee9c35e2}} 
+\#define \mbox{\hyperlink{vjezba3_8c_a5bb885982ff66a2e0a0a45a8ee9c35e2}{H\+I\+GH}}~1
+\begin{DoxyCompactList}\small\item\em Makro za podesavanje visoke vrednosti signala na pinu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_ab811d8c6ff3a505312d3276590444289}\label{vjezba3_8c_ab811d8c6ff3a505312d3276590444289}} 
+\#define \mbox{\hyperlink{vjezba3_8c_ab811d8c6ff3a505312d3276590444289}{L\+OW}}~0
+\begin{DoxyCompactList}\small\item\em Makro za podesavanje niske vrednosti signala na pinu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_a61a3c9a18380aafb6e430e79bf596557}\label{vjezba3_8c_a61a3c9a18380aafb6e430e79bf596557}} 
+\#define \mbox{\hyperlink{vjezba3_8c_a61a3c9a18380aafb6e430e79bf596557}{O\+U\+T\+P\+UT}}~1
+\begin{DoxyCompactList}\small\item\em Makro za podesavanje izlaznog smera pina. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_a1bb283bd7893b9855e2f23013891fc82}\label{vjezba3_8c_a1bb283bd7893b9855e2f23013891fc82}} 
+\#define \mbox{\hyperlink{vjezba3_8c_a1bb283bd7893b9855e2f23013891fc82}{I\+N\+P\+UT}}~0
+\begin{DoxyCompactList}\small\item\em Makro za podesavanje ulaznog smera pina. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_ab67535e80c86be4dabdcae0f6028511d}\label{vjezba3_8c_ab67535e80c86be4dabdcae0f6028511d}} 
+\#define \mbox{\hyperlink{vjezba3_8c_ab67535e80c86be4dabdcae0f6028511d}{P\+O\+R\+T\+\_\+B}}~0
+\begin{DoxyCompactList}\small\item\em Makro za selektovanje porta B. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_a8b1f19a91c7a14a40f9633985d330e40}\label{vjezba3_8c_a8b1f19a91c7a14a40f9633985d330e40}} 
+\#define \mbox{\hyperlink{vjezba3_8c_a8b1f19a91c7a14a40f9633985d330e40}{P\+O\+R\+T\+\_\+C}}~1
+\begin{DoxyCompactList}\small\item\em Makro za selektovanje porta C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_ae256d5f69ef8fdfab967632ad7b753df}\label{vjezba3_8c_ae256d5f69ef8fdfab967632ad7b753df}} 
+\#define \mbox{\hyperlink{vjezba3_8c_ae256d5f69ef8fdfab967632ad7b753df}{P\+O\+R\+T\+\_\+D}}~2
+\begin{DoxyCompactList}\small\item\em Makro za selektovanje porta D. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vjezba3_8c_a01a38dd4c581bb40a916600e7f32f18e}\label{vjezba3_8c_a01a38dd4c581bb40a916600e7f32f18e}} 
+\#define \mbox{\hyperlink{vjezba3_8c_a01a38dd4c581bb40a916600e7f32f18e}{D\+I\+O\+D\+E\+\_\+\+P\+IN}}~5
+\begin{DoxyCompactList}\small\item\em Makro za selektovanje pina na koji je povezana dioda. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{vjezba3_8c_a6eba30b14e7433bc5d48ae78f3682f1c}{pin\+Pulse}} (unsigned char port, unsigned char pin, unsigned long period)
+\item 
+void \mbox{\hyperlink{vjezba3_8c_a2a16b0b96e2105acbc86920c802fe0c6}{pin\+Set\+Value}} (unsigned char port, unsigned char pin, unsigned char value)
+\item 
+void \mbox{\hyperlink{vjezba3_8c_a77aa088e614a56bcb99fce9ed3b844e9}{pin\+Init}} (unsigned char port, unsigned char pin, unsigned char direction)
+\item 
+unsigned long \mbox{\hyperlink{vjezba3_8c_a785a1fcef6b5bf57be7923da12642d09}{timer0\+Delay\+Ms}} (unsigned long delay\+\_\+length)
+\item 
+void \mbox{\hyperlink{vjezba3_8c_ad0b560c25c9814a5e047af83234c63ac}{timer0\+Interupt\+Init}} ()
+\item 
+int \mbox{\hyperlink{vjezba3_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\item 
+\mbox{\hyperlink{vjezba3_8c_aec43762dc86e029b395d4e5819192c2d}{I\+SR}} (T\+I\+M\+E\+R0\+\_\+\+C\+O\+M\+P\+A\+\_\+vect)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{vjezba3_8c_ac93cf9d112b1b0f88dbdfd1803d62516}\label{vjezba3_8c_ac93cf9d112b1b0f88dbdfd1803d62516}} 
+volatile unsigned long \mbox{\hyperlink{vjezba3_8c_ac93cf9d112b1b0f88dbdfd1803d62516}{ms}} = 0
+\begin{DoxyCompactList}\small\item\em Promenljiva koja skladisti broj milisekundi proteklih od pokretanja. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Aplikacija koja implementira ogranicen broj treptanja diode. 
+
+\begin{DoxyAuthor}{Author}
+Ime Prezime 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14-\/03-\/2021 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{vjezba3_8c_aec43762dc86e029b395d4e5819192c2d}\label{vjezba3_8c_aec43762dc86e029b395d4e5819192c2d}} 
+\index{vjezba3.c@{vjezba3.c}!ISR@{ISR}}
+\index{ISR@{ISR}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}}
+{\footnotesize\ttfamily I\+SR (\begin{DoxyParamCaption}\item[{T\+I\+M\+E\+R0\+\_\+\+C\+O\+M\+P\+A\+\_\+vect}]{ }\end{DoxyParamCaption})}
+
+I\+SR -\/ prekidna rutina tajmera 0 u modu C\+TC \mbox{\Hypertarget{vjezba3_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{vjezba3_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{vjezba3.c@{vjezba3.c}!main@{main}}
+\index{main@{main}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+main -\/ funkcija koja implementiran glavni deo aplikacije \begin{DoxyReturn}{Returns}
+Nema povratnu vrednost 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vjezba3_8c_a77aa088e614a56bcb99fce9ed3b844e9}\label{vjezba3_8c_a77aa088e614a56bcb99fce9ed3b844e9}} 
+\index{vjezba3.c@{vjezba3.c}!pinInit@{pinInit}}
+\index{pinInit@{pinInit}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{pinInit()}{pinInit()}}
+{\footnotesize\ttfamily void pin\+Init (\begin{DoxyParamCaption}\item[{unsigned char}]{port,  }\item[{unsigned char}]{pin,  }\item[{unsigned char}]{direction }\end{DoxyParamCaption})}
+
+pin\+Init -\/ Funkcija koja implementiran inicijalizaciju pina 
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ ulaz tipa unsigned char -\/ Port na kojem je pin koji je potrebno inicijalizovati \\
+\hline
+{\em pin} & -\/ ulaz tipa unsigned char -\/ Pin koji je potrebno inicijalizovati \\
+\hline
+{\em direction} & -\/ ulaz tipa unsigned char -\/ Smer prema kojem je potrebno inicijalizovati pin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nema povratnu vrednost 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vjezba3_8c_a6eba30b14e7433bc5d48ae78f3682f1c}\label{vjezba3_8c_a6eba30b14e7433bc5d48ae78f3682f1c}} 
+\index{vjezba3.c@{vjezba3.c}!pinPulse@{pinPulse}}
+\index{pinPulse@{pinPulse}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{pinPulse()}{pinPulse()}}
+{\footnotesize\ttfamily void pin\+Pulse (\begin{DoxyParamCaption}\item[{unsigned char}]{port,  }\item[{unsigned char}]{pin,  }\item[{unsigned long}]{period }\end{DoxyParamCaption})}
+
+pin\+Pulse -\/ Funkcija koja implementiran podizanje i spustanje vrednosti na pinu odgovarajucom brzinom 
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ ulaz tipa unsigned char -\/ Port na kojem je potrebno implementirati funkcionalnost \\
+\hline
+{\em pin} & -\/ ulaz tipa unsigned char -\/ Pin na kojem je potrebno implementirati funkcionalnost \\
+\hline
+{\em period} & -\/ ulaz tipa unsigned long -\/ Perioda promene vrednosti na pinu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nema povratnu vrednost 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vjezba3_8c_a2a16b0b96e2105acbc86920c802fe0c6}\label{vjezba3_8c_a2a16b0b96e2105acbc86920c802fe0c6}} 
+\index{vjezba3.c@{vjezba3.c}!pinSetValue@{pinSetValue}}
+\index{pinSetValue@{pinSetValue}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{pinSetValue()}{pinSetValue()}}
+{\footnotesize\ttfamily void pin\+Set\+Value (\begin{DoxyParamCaption}\item[{unsigned char}]{port,  }\item[{unsigned char}]{pin,  }\item[{unsigned char}]{value }\end{DoxyParamCaption})}
+
+pin\+Set\+Value -\/ Funkcija koja postavlja vrednost na pinu Razvoj softvera za digitalne mikrokontrolere 
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ ulaz tipa unsigned char -\/ Port na kojem je pin ciju vrednost potrebno postaviti \\
+\hline
+{\em pin} & -\/ ulaz tipa unsigned char -\/ Pin ciju je vrednost potrebno postaviti \\
+\hline
+{\em value} & -\/ ulaz tipa unsigned char -\/ Vrednost koju je potrebno postaviti na pin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nema povratnu vrednost 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vjezba3_8c_a785a1fcef6b5bf57be7923da12642d09}\label{vjezba3_8c_a785a1fcef6b5bf57be7923da12642d09}} 
+\index{vjezba3.c@{vjezba3.c}!timer0DelayMs@{timer0DelayMs}}
+\index{timer0DelayMs@{timer0DelayMs}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{timer0DelayMs()}{timer0DelayMs()}}
+{\footnotesize\ttfamily unsigned long timer0\+Delay\+Ms (\begin{DoxyParamCaption}\item[{unsigned long}]{delay\+\_\+length }\end{DoxyParamCaption})}
+
+timer0\+Delay\+Ms -\/ Funkcija koja implementira pauzu u broju milisekundi koji je prosledjen kao parametar 
+\begin{DoxyParams}{Parameters}
+{\em delay\+\_\+length} & -\/ ulaz tipa unsigned long -\/ Duzina pauze u milisekundama \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Povratna vrednost je tipa unsigned long i ima vrednost broja milisekundi proteklih od pocetka aplikacije do trenutka izlaska iz funkcije 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vjezba3_8c_ad0b560c25c9814a5e047af83234c63ac}\label{vjezba3_8c_ad0b560c25c9814a5e047af83234c63ac}} 
+\index{vjezba3.c@{vjezba3.c}!timer0InteruptInit@{timer0InteruptInit}}
+\index{timer0InteruptInit@{timer0InteruptInit}!vjezba3.c@{vjezba3.c}}
+\doxysubsubsection{\texorpdfstring{timer0InteruptInit()}{timer0InteruptInit()}}
+{\footnotesize\ttfamily void timer0\+Interupt\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+timer0\+Interupt\+Init -\/ Funkcija koja inicijalizuje timer 0 tako da pravi prekide svake milisekunde \begin{DoxyReturn}{Returns}
+Nema povratnu vrednost 
+\end{DoxyReturn}
