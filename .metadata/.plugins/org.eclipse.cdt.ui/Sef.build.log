@@ -1,0 +1,71 @@
+09:37:25 **** Incremental Build of configuration Release for project Sef ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: Sef.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Sef.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\timer0\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\pin\Release" -mmcu=atmega328p -o "Sef.elf"  ./main.o   -lusart -ltimer0 -lpin
+Finished building target: Sef.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Sef.elf  >"Sef.lss"
+Finished building: Sef.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Sef.elf  "Sef.hex"
+Finished building: Sef.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Sef.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    1670 bytes (5.1% Full)
+(.text + .data + .bootloader)
+
+Data:         71 bytes (3.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:Sef.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "Sef.hex"
+avrdude: input file Sef.hex auto detected as Intel Hex
+avrdude: writing flash (1670 bytes):
+
+Writing | ################################################## | 100% 0.27s
+
+avrdude: 1670 bytes of flash written
+avrdude: verifying flash memory against Sef.hex:
+avrdude: load data flash data from input file Sef.hex:
+avrdude: input file Sef.hex auto detected as Intel Hex
+avrdude: input file Sef.hex contains 1670 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.21s
+
+avrdude: verifying ...
+avrdude: 1670 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+09:37:29 Build Finished. 0 errors, 0 warnings. (took 3s.594ms)
+

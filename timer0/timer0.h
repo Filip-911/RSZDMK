@@ -30,9 +30,10 @@ prekide
  * @return Nema povratnu vrednost
  */
 void timer0InteruptInit();
-/**
- * main - funkcija koja implementiran glavni deo aplikacije
+
+/**delay
  * @return Nema povratnu vrednost
  */
+void delay_1m (void);
 
 #endif /* TIMER0_H_ */

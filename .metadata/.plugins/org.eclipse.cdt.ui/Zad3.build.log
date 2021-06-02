@@ -1,0 +1,53 @@
+15:53:19 **** Incremental Build of configuration Release for project Zad3 ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Zad3.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    2368 bytes (7.2% Full)
+(.text + .data + .bootloader)
+
+Data:         73 bytes (3.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:Zad3.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "Zad3.hex"
+avrdude: input file Zad3.hex auto detected as Intel Hex
+avrdude: writing flash (2368 bytes):
+
+Writing | ################################################## | 100% 0.37s
+
+avrdude: 2368 bytes of flash written
+avrdude: verifying flash memory against Zad3.hex:
+avrdude: load data flash data from input file Zad3.hex:
+avrdude: input file Zad3.hex auto detected as Intel Hex
+avrdude: input file Zad3.hex contains 2368 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.29s
+
+avrdude: verifying ...
+avrdude: 2368 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+15:53:22 Build Finished. 0 errors, 0 warnings. (took 2s.578ms)
+

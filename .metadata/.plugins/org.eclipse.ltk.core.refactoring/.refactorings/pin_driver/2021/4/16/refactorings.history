@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;pin_driver/pin_driver.h&apos; to &apos;pin.h&apos;" description="Rename resource &apos;pin_driver.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pin_driver.h" name="pin.h" stamp="1618209838500" updateReferences="true"/>
+</session>

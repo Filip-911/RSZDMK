@@ -1,0 +1,66 @@
+/*
+ * main.c
+ *
+ *  Created on: May 6, 2021
+ *      Author: Korisnik
+ */
+
+#include "../usart/usart.h"
+#include <stdio.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/pgmspace.h>
+#include <string.h>
+
+#define BROJ_KORISNIKA 5
+
+char korisnici [BROJ_KORISNIKA] [32] =
+{
+	"Sundjer Bob Kockalone",
+	"Dijego Armando Maradona",
+	"Bond. Dzejms Bond",
+	"Zoran Kostic Cane",
+	"Kim Dzong Un"
+};
+
+
+int main ()
+
+{
+	usartInit(9600);
+
+	char broj [50], ispis [50];
+	uint8_t rez=0;
+
+	while(1)
+	{
+		usartPutString_P(PSTR("Unesite ime i prezime : "));
+
+		while(!usartAvailable());
+		_delay_ms(50);
+
+		uint8_t duzina = usartGetString(broj);
+
+		usartPutString(broj);
+
+		for(uint8_t i = 0 ; i < duzina ; i++)
+		{
+			if (broj[i] <= 'z' && broj[i] >= 'a')
+				broj[i] += 'A' - 'a';
+			else
+			{
+				if (broj[i] <= 'Z' && broj[i] >= 'A')
+					broj[i] -= 'A' - 'a';
+			}
+		}
+
+
+		usartPutString_P(PSTR("\r \n"));
+		sprintf( ispis, " Toglirano  : %s", broj);
+		usartPutString(ispis);
+		usartPutString_P(PSTR("\r \n"));
+
+	}
+
+	return 0;
+}

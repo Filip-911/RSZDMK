@@ -1,0 +1,77 @@
+22:38:14 **** Incremental Build of configuration Debug for project Zad7.5 ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c: In function 'main':
+../main.c:33: warning: implicit declaration of function 'atoi'
+../main.c:46: warning: comparison between pointer and integer
+../main.c:50: warning: assignment makes integer from pointer without a cast
+Finished building: ../main.c
+ 
+Building target: Zad7.5.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Zad7.5.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "Zad7.5.elf"  ./main.o   -lusart
+Finished building target: Zad7.5.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Zad7.5.elf  >"Zad7.5.lss"
+Finished building: Zad7.5.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Zad7.5.elf  "Zad7.5.hex"
+Finished building: Zad7.5.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Zad7.5.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    5528 bytes (16.9% Full)
+(.text + .data + .bootloader)
+
+Data:         81 bytes (4.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:Zad7.5.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "Zad7.5.hex"
+avrdude: input file Zad7.5.hex auto detected as Intel Hex
+avrdude: writing flash (5528 bytes):
+
+Writing | ################################################## | 100% 0.88s
+
+avrdude: 5528 bytes of flash written
+avrdude: verifying flash memory against Zad7.5.hex:
+avrdude: load data flash data from input file Zad7.5.hex:
+avrdude: input file Zad7.5.hex auto detected as Intel Hex
+avrdude: input file Zad7.5.hex contains 5528 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.67s
+
+avrdude: verifying ...
+avrdude: 5528 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+22:38:18 Build Finished. 0 errors, 4 warnings. (took 3s.897ms)
+

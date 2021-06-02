@@ -1,0 +1,20 @@
+09:10:37 **** Incremental Build of configuration Debug for project pin_driver ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p libpin_driver.a
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+09:10:37 Build Finished. 0 errors, 0 warnings. (took 293ms)
+

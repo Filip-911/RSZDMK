@@ -1,11 +1,6 @@
-/*
- * main.c
- *
- *  Created on: May 17, 2021
- *      Author: Korisnik
- */
 
-#include <stdint.h>
+
+
 #include "../usart/usart.h"
 #include "../timer0/timer0.h"
 #include "../pin/pin.h"

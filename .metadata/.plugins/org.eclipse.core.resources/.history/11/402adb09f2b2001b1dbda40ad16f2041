@@ -1,0 +1,84 @@
+/*
+ * main.c
+ *
+ *  Created on: May 6, 2021
+ *      Author: Korisnik
+ */
+
+#include "../usart/usart.h"
+#include <stdio.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/pgmspace.h>
+#include <string.h>
+
+#define BROJ_KORISNIKA 10
+
+char korisnici [BROJ_KORISNIKA] [32] =
+{
+	"Sundjer Bob Kockalone",
+	"Dijego Armando Maradona",
+	"Bond. Dzejms Bond",
+	"Zoran Kostic Cane",
+	"Kim Dzong Un"
+};
+
+char pinovi [BROJ_KORISNIKA] [4] = {"1234", "2345", "3456", "4567", "5678"};
+
+int main ()
+{
+	usartInit(9600);
+
+	char ime [50], ispis [50], found = 0, legit = 1, PIN [4];
+	uint8_t i, duzina;
+
+	while(1)
+	{
+		usartPutString_P(PSTR("\r \n"));
+		usartPutString_P(PSTR("Unesite ime i prezime : "));
+		usartPutString_P(PSTR("\r \n"));
+		found = 0;
+		legit = 1;
+
+		while(!usartAvailable());
+		_delay_ms(50);
+
+		usartGetString(ime);
+
+
+		for (i = 0; i < BROJ_KORISNIKA; i++)
+		{
+			if(!strcmp(ime, korisnici[i]))
+			{
+			found = 1;
+			break;
+			}
+		}
+		if(found)
+		{
+			usartPutString_P(PSTR("Unesite PIN : "));
+			usartPutString_P(PSTR("\r \n"));
+
+			while(!usartAvailable());
+			_delay_ms(50);
+
+			duzina = strlen(PIN);
+
+			for (uint8_t j = 0; j < duzina; j++)
+			{
+				if (PIN[j] !=  pinovi[i][j])
+					legit = 0;
+			}
+
+			if (legit)
+				usartPutString_P(PSTR(" Koliko kesa ? ->  "));
+			else
+				usartPutString_P(PSTR(" Noup, try again (: "));
+
+		}
+		else
+			usartPutString_P(PSTR(" Noup, try again (: "));
+	}
+
+	return 0;
+}

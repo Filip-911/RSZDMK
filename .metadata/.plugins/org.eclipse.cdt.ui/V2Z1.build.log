@@ -1,0 +1,41 @@
+15:53:15 **** Incremental Build of configuration Debug for project V2Z1 ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p V2Z1.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:     158 bytes (0.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:V2Z1.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "V2Z1.hex"
+avrdude: error opening V2Z1.hex: No such file or directory
+avrdude: input file V2Z1.hex auto detected as invalid format
+avrdude: can't open input file V2Z1.hex: No such file or directory
+avrdude: write to file 'V2Z1.hex' failed
+
+avrdude done.  Thank you.
+
+make: *** [avrdudedummy] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+15:53:17 Build Failed. 1 errors, 0 warnings. (took 1s.869ms)
+

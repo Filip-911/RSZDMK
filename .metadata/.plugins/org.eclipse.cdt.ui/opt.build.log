@@ -1,0 +1,44 @@
+10:24:46 **** Incremental Build of configuration Release for project opt ****
+make all 
+Building file: ../opt.c
+Invoking: AVR Compiler
+avr-gcc -Wall -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"opt.d" -MT"opt.o" -c -o "opt.o" "../opt.c"
+../opt.c: In function 'racun':
+../opt.c:22: warning: control reaches end of non-void function
+Finished building: ../opt.c
+ 
+Building target: opt.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,opt.map -mmcu=atmega16 -o "opt.elf"  ./opt.o   
+Finished building target: opt.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S opt.elf  >"opt.lss"
+Finished building: opt.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex opt.elf  "opt.hex"
+Finished building: opt.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex opt.elf  "opt.eep"
+Finished building: opt.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 opt.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:     760 bytes (4.6% Full)
+(.text + .data + .bootloader)
+
+Data:          2 bytes (0.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+10:24:47 Build Finished. 0 errors, 1 warnings. (took 669ms)
+

@@ -1,0 +1,74 @@
+09:41:15 **** Incremental Build of configuration Release for project tajmer ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\vjezba4\Release" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:34: warning: unused variable 'duzina'
+../main.c:78: warning: array subscript is above array bounds
+Finished building: ../main.c
+ 
+Building target: tajmer.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,tajmer.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "tajmer.elf"  ./main.o   -lusart
+Finished building target: tajmer.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S tajmer.elf  >"tajmer.lss"
+Finished building: tajmer.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex tajmer.elf  "tajmer.hex"
+Finished building: tajmer.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p tajmer.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    2952 bytes (9.0% Full)
+(.text + .data + .bootloader)
+
+Data:        443 bytes (21.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:tajmer.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "tajmer.hex"
+avrdude: input file tajmer.hex auto detected as Intel Hex
+avrdude: writing flash (2952 bytes):
+
+Writing | ################################################## | 100% 0.47s
+
+avrdude: 2952 bytes of flash written
+avrdude: verifying flash memory against tajmer.hex:
+avrdude: load data flash data from input file tajmer.hex:
+avrdude: input file tajmer.hex auto detected as Intel Hex
+avrdude: input file tajmer.hex contains 2952 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.36s
+
+avrdude: verifying ...
+avrdude: 2952 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+09:41:18 Build Finished. 0 errors, 2 warnings. (took 3s.104ms)
+

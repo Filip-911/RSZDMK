@@ -1,0 +1,53 @@
+15:53:42 **** Incremental Build of configuration Release for project vjezba3 ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p vjezba3.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:     918 bytes (2.8% Full)
+(.text + .data + .bootloader)
+
+Data:          4 bytes (0.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:vjezba3.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "vjezba3.hex"
+avrdude: input file vjezba3.hex auto detected as Intel Hex
+avrdude: writing flash (918 bytes):
+
+Writing | ################################################## | 100% 0.15s
+
+avrdude: 918 bytes of flash written
+avrdude: verifying flash memory against vjezba3.hex:
+avrdude: load data flash data from input file vjezba3.hex:
+avrdude: input file vjezba3.hex auto detected as Intel Hex
+avrdude: input file vjezba3.hex contains 918 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.11s
+
+avrdude: verifying ...
+avrdude: 918 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+15:53:44 Build Finished. 0 errors, 0 warnings. (took 2s.181ms)
+

@@ -1,0 +1,87 @@
+12:04:15 **** Incremental Build of configuration Release for project Serijski_demo ****
+make all 
+Building file: ../Serijski_demo.c
+Invoking: AVR Compiler
+avr-gcc -Wall -O2 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"Serijski_demo.d" -MT"Serijski_demo.o" -c -o "Serijski_demo.o" "../Serijski_demo.c"
+../Serijski_demo.c: In function 'main':
+../Serijski_demo.c:24: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../Serijski_demo.c:25: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../Serijski_demo.c:30: warning: pointer targets in passing argument 1 of 'usartGetString' differ in signedness
+../Serijski_demo.c:44: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../Serijski_demo.c:45: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../Serijski_demo.c:46: warning: pointer targets in passing argument 1 of 'usartPutString' differ in signedness
+../Serijski_demo.c: In function 'kejs':
+../Serijski_demo.c:80: warning: control reaches end of non-void function
+../Serijski_demo.c: In function 'main':
+../Serijski_demo.c:30: warning: 'broj' is used uninitialized in this function
+../Serijski_demo.c:42: warning: array subscript is above array bounds
+Finished building: ../Serijski_demo.c
+ 
+Building target: Serijski_demo.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Serijski_demo.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "Serijski_demo.elf"  ./Serijski_demo.o   -lusart
+Finished building target: Serijski_demo.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Serijski_demo.elf  >"Serijski_demo.lss"
+Finished building: Serijski_demo.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Serijski_demo.elf  "Serijski_demo.hex"
+Finished building: Serijski_demo.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Serijski_demo.elf  "Serijski_demo.eep"
+Finished building: Serijski_demo.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Serijski_demo.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:     876 bytes (2.7% Full)
+(.text + .data + .bootloader)
+
+Data:         67 bytes (3.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:Serijski_demo.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "Serijski_demo.hex"
+avrdude: input file Serijski_demo.hex auto detected as Intel Hex
+avrdude: writing flash (876 bytes):
+
+Writing | ################################################## | 100% 0.14s
+
+avrdude: 876 bytes of flash written
+avrdude: verifying flash memory against Serijski_demo.hex:
+avrdude: load data flash data from input file Serijski_demo.hex:
+avrdude: input file Serijski_demo.hex auto detected as Intel Hex
+avrdude: input file Serijski_demo.hex contains 876 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.11s
+
+avrdude: verifying ...
+avrdude: 876 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+12:04:17 Build Finished. 0 errors, 9 warnings. (took 2s.541ms)
+

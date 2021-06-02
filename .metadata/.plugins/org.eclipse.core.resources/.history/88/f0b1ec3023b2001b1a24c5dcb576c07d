@@ -1,0 +1,45 @@
+
+/*
+ * main.c
+ *
+ *  Created on: May 6, 2021
+ *      Author: Korisnik
+ */
+
+#include "../usart/usart.h"
+#include <stdio.h>
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include "utils.h"
+#include "util/delay.h"
+
+int main ()
+{
+	usartInit(9600);
+	timer0InterruptInit();
+	pinInit( PORT_B, 5, OUTPUT);
+
+	uint8_t count, duty;
+
+	while(1)
+	{
+		count = getIntCount();
+		duty = getDuty();
+
+		if ()
+		{
+			if (count  <= duty)
+				pinSetValue(PORT_B, 5, 0);
+			else
+				pinSetValue(PORT_B, 5, 1);
+		}
+
+		else
+		{
+			setDuty(++duty);
+			_delay_ms(6);
+		}
+	}
+
+	return 0;
+}

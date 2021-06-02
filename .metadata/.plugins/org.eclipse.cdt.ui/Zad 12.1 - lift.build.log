@@ -1,0 +1,13 @@
+18:33:35 **** Incremental Build of configuration Release for project Zad 12.1 - lift ****
+make all 
+Building target: Zad 12.1 - lift.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Zad 12.1 - lift.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\timer0\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\PLS7\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\pin\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "Zad 12.1 - lift.elf"  ./main.o   -ltimer0 -lPLS7 -lpin -lusart
+avr-gcc.exe: 12.1: No such file or directory
+avr-gcc.exe: lift.map: No such file or directory
+avr-gcc.exe: -E or -x required when input is from standard input
+make: *** [Zad 12.1 - lift.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+18:33:37 Build Failed. 1 errors, 0 warnings. (took 1s.507ms)
+

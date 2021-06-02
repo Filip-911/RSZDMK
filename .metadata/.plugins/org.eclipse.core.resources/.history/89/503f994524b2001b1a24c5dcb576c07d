@@ -1,0 +1,125 @@
+
+/*
+ * main.c
+ *
+ *  Created on: May 6, 2021
+ *      Author: Korisnik
+ */
+
+#include "../usart/usart.h"
+#include <stdio.h>
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <avr/interrupt.h>
+#include "util/delay.h"
+
+#define OUTPUT 1
+#define INPUT 0
+///
+#define PORT_B 0
+#define PORT_C 1
+#define PORT_D 2
+
+/// Makro za podesavanje visoke vrednosti signala na pinu
+#define HIGH 1
+/// Makro za podesavanje niske vrednosti signala na pinu
+#define LOW 0
+
+volatile uint8_t intCount  = 0; // broji blokove od 10us
+
+uint8_t duty=0; //prag
+
+
+void timer0InterruptInit () // generise prekid svakih 10us
+{
+	TCCR0A = 0x02;
+	TCCR0B = 0x01;
+	OCR0A = 159;
+	TIMSK0 = 0x02;
+	sei();
+}
+
+void pinInit (char port, char pin, char dir)
+{
+	switch (port)
+	{
+		case PORT_B:
+			if(dir == OUTPUT)
+				DDRB |=  1 << pin ;
+			else
+				DDRB &= ~(1 << pin);
+		break;
+
+		case PORT_C:
+			if(dir == OUTPUT)
+				DDRC |= 1 << pin ;
+			else
+				DDRC &= ~(1 << pin);
+		break;
+
+		case PORT_D:
+			if(dir == OUTPUT)
+				DDRD |= 1 << pin ;
+			else
+				DDRD &= ~(1 << pin);
+		break;
+	}
+}
+
+void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
+{
+	// Postavljanje vrednosti pina
+	switch(port)
+	{ case PORT_B:
+		if (value == HIGH)
+			PORTB |= 1 << pin;
+		else
+			PORTB &= ~(1 << pin);
+		break;
+	case PORT_C:
+		if (value == HIGH)
+			PORTC |= 1 << pin;
+		else
+			PORTC &= ~(1 << pin);
+		break;
+	case PORT_D:
+		if (value == HIGH)
+			PORTD |= 1 << pin;
+		else
+			PORTD &= ~(1 << pin);
+		break;
+	default:
+		break;
+	}
+}
+
+ISR (TIMER0_COMPA_vect)
+{
+	intCount++;
+}
+
+int main ()
+{
+	usartInit(9600);
+	timer0InterruptInit();
+	pinInit( PORT_B, 5, OUTPUT);
+
+	while(1)
+	{
+		if (getIntCount())
+		{
+			if (getIntCount()  <= getDuty())
+				pinSetValue(PORT_B, 5, 0);
+			else
+				pinSetValue(PORT_B, 5, 1);
+		}
+
+		else
+		{
+			incDuty();
+			_delay_ms(6);
+		}
+	}
+
+	return 0;
+}

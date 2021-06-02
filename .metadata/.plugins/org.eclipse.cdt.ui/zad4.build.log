@@ -1,0 +1,85 @@
+13:30:59 **** Incremental Build of configuration Release for project zad4 ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:26: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../main.c:27: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../main.c:58: warning: passing argument 2 of 'operation' makes integer from pointer without a cast
+../main.c:58: warning: passing argument 3 of 'operation' makes integer from pointer without a cast
+../main.c:60: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../main.c:62: warning: pointer targets in passing argument 1 of 'usartPutString_P' differ in signedness
+../main.c:32: warning: unused variable 'len'
+../main.c: In function 'operation':
+../main.c:80: warning: control reaches end of non-void function
+Finished building: ../main.c
+ 
+Building target: zad4.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,zad4.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "zad4.elf"  ./main.o   -lusart
+Finished building target: zad4.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S zad4.elf  >"zad4.lss"
+Finished building: zad4.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex zad4.elf  "zad4.hex"
+Finished building: zad4.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex zad4.elf  "zad4.eep"
+Finished building: zad4.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p zad4.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    3506 bytes (10.7% Full)
+(.text + .data + .bootloader)
+
+Data:        333 bytes (16.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:zad4.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "zad4.hex"
+avrdude: input file zad4.hex auto detected as Intel Hex
+avrdude: writing flash (3506 bytes):
+
+Writing | ################################################## | 100% 0.55s
+
+avrdude: 3506 bytes of flash written
+avrdude: verifying flash memory against zad4.hex:
+avrdude: load data flash data from input file zad4.hex:
+avrdude: input file zad4.hex auto detected as Intel Hex
+avrdude: input file zad4.hex contains 3506 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.42s
+
+avrdude: verifying ...
+avrdude: 3506 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+13:31:02 Build Finished. 0 errors, 8 warnings. (took 3s.633ms)
+

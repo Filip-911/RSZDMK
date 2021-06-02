@@ -1,0 +1,35 @@
+09:23:56 **** Build of configuration Release for project pin ****
+make all 
+Building file: ../pin.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"pin.d" -MT"pin.o" -c -o "pin.o" "../pin.c"
+Finished building: ../pin.c
+ 
+Building target: libpin.a
+Invoking: AVR Archiver
+avr-ar -r  "libpin.a"  ./pin.o  
+c:\WinAVR-20100110\bin\avr-ar.exe: creating libpin.a
+Finished building target: libpin.a
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S libpin.a  >"libpin.lss"
+Finished building: libpin.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p libpin.a
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+09:23:56 Build Finished. 0 errors, 0 warnings. (took 472ms)
+

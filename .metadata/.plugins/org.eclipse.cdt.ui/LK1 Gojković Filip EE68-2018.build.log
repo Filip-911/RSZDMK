@@ -1,0 +1,7 @@
+09:43:05 **** Incremental Build of configuration Release for project LK1 Gojkovi? Filip EE68-2018 ****
+make all 
+make: *** No rule to make target `all'.  Stop.
+"make all" terminated with exit code 2. Build might be incomplete.
+
+09:43:05 Build Failed. 1 errors, 0 warnings. (took 112ms)
+

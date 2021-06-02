@@ -1,0 +1,87 @@
+/*
+ * utils.c
+ *
+ *  Created on: May 10, 2021
+ *      Author: Korisnik
+ */
+#include "utils.h"
+
+volatile unsigned char desetka = 0; // broji blokove od 10us
+
+
+void timer0InterruptInit () // generise prekid svakih 10us
+{
+	TCCR0A = 0x02;
+	TCCR0B = 0x01;
+	OCR0A = 159;
+	TIMSK0 = 0x02;
+	sei();
+}
+
+void pinInit (char port, char pin, char dir)
+{
+	switch (port)
+	{
+		case PORT_B:
+			if(dir == OUTPUT)
+				DDRB |=  1 << pin ;
+			else
+				DDRB &= ~(1 << pin);
+		break;
+
+		case PORT_C:
+			if(dir == OUTPUT)
+				DDRC |= 1 << pin ;
+			else
+				DDRC &= ~(1 << pin);
+		break;
+
+		case PORT_D:
+			if(dir == OUTPUT)
+				DDRD |= 1 << pin ;
+			else
+				DDRD &= ~(1 << pin);
+		break;
+	}
+}
+
+unsigned long delayTimer (unsigned long period)
+{
+	unsigned long tmp = interrupt_times;
+
+	while ( interrupt_times - tmp < period )
+		;
+}
+
+void pinSetValue ( char port, char pin, char value )
+{
+	switch (port)
+		{
+			case PORT_B:
+				if(dir == OUTPUT)
+					PORTB |=  1 << pin ;
+				else
+					DDRB &= ~(1 << pin);
+			break;
+
+			case PORT_C:
+				if(dir == OUTPUT)
+					DDRC |= 1 << pin ;
+				else
+					DDRC &= ~(1 << pin);
+			break;
+
+			case PORT_D:
+				if(dir == OUTPUT)
+					DDRD |= 1 << pin ;
+				else
+					DDRD &= ~(1 << pin);
+			break;
+		}
+}
+
+ISR (TIMER0_COMPA_vect)
+{
+	desetka++;
+
+}

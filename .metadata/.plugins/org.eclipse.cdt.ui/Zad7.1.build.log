@@ -1,0 +1,77 @@
+09:38:31 **** Incremental Build of configuration Release for project Zad7.1 ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:20: warning: unused variable 'ime1'
+Finished building: ../main.c
+ 
+Building target: Zad7.1.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Zad7.1.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "Zad7.1.elf"  ./main.o   -lusart
+Finished building target: Zad7.1.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Zad7.1.elf  >"Zad7.1.lss"
+Finished building: Zad7.1.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Zad7.1.elf  "Zad7.1.hex"
+Finished building: Zad7.1.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Zad7.1.elf  "Zad7.1.eep"
+Finished building: Zad7.1.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Zad7.1.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    2538 bytes (7.7% Full)
+(.text + .data + .bootloader)
+
+Data:        101 bytes (4.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+Invoking: AVRDude
+C:\WinAVR-20100110\bin\avrdude -pm328p -carduino -PCOM3 -Uflash:w:Zad7.1.hex:a
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f
+avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "Zad7.1.hex"
+avrdude: input file Zad7.1.hex auto detected as Intel Hex
+avrdude: writing flash (2538 bytes):
+
+Writing | ################################################## | 100% 0.39s
+
+avrdude: 2538 bytes of flash written
+avrdude: verifying flash memory against Zad7.1.hex:
+avrdude: load data flash data from input file Zad7.1.hex:
+avrdude: input file Zad7.1.hex auto detected as Intel Hex
+avrdude: input file Zad7.1.hex contains 2538 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.30s
+
+avrdude: verifying ...
+avrdude: 2538 bytes of flash verified
+
+avrdude done.  Thank you.
+
+Finished building: avrdudedummy
+ 
+
+09:38:35 Build Finished. 0 errors, 1 warnings. (took 3s.376ms)
+

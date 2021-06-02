@@ -28,6 +28,7 @@ void pinSetValue(unsigned char port, unsigned char pin, unsigned char value)
 		break;
 	}
 }
+
 /*********************************************************************/
 void pinInit(unsigned char port, unsigned char pin, unsigned char direction)
 {

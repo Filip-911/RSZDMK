@@ -1,0 +1,15 @@
+15:53:25 **** Incremental Build of configuration Release for project Zad7.10 ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:35: error: expected expression before ',' token
+../main.c:36: error: too few arguments to function 'usartPutString'
+../main.c:32: warning: unused variable 'duzina'
+../main.c:22: warning: unused variable 'rez'
+make: *** [main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+15:53:25 Build Failed. 3 errors, 2 warnings. (took 208ms)
+
