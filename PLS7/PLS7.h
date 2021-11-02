@@ -33,6 +33,7 @@ uint8_t buttonState(uint8_t button);
 #define S8 0
 
 uint8_t readSwitches();
+
 uint8_t switchState(uint8_t sw);
 
 #endif

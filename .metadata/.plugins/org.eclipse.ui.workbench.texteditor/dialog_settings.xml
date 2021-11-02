@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="for (int i = 10; i ; i--)"/>
+		<item key="selection" value="state = BROKEN"/>
 		<list key="findhistory">
+			<item value="state = BROKEN"/>
+			<item value="racun2"/>
+			<item value="racun"/>
 			<item value="&#x09;for (int i = 10; i ; i--)"/>
 			<item value="for (int i = 10; i ; i--)"/>
 			<item value="for(int i = 10; i ; i--)"/>
@@ -17,6 +20,8 @@
 			<item value="door = DOOR_CLOSED"/>
 		</list>
 		<list key="replacehistory">
+			<item value="pinSetValue(PORT_B, DIODE_PIN, HIGH);"/>
+			<item value="racun2"/>
 			<item value="&#x09;for (int i = 10; i ; i--)"/>
 			<item value="for (int i = 10; i ; i--)"/>
 			<item value="delay_1m"/>

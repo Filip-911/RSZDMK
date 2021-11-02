@@ -41,8 +41,6 @@ uint8_t readDisplay(uint8_t display)
 
 uint8_t buttonState(uint8_t button)
 {
-
-
 	if (PINC & (1 << button))
 		return 0;
 	else

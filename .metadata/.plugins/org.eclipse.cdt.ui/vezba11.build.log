@@ -1,4 +1,4 @@
-09:50:19 **** Incremental Build of configuration Release for project vezba11 ****
+19:42:23 **** Build of configuration Release for project vezba11 ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p vezba11.elf
@@ -39,7 +39,7 @@ avrdude: input file vezba11.hex auto detected as Intel Hex
 avrdude: input file vezba11.hex contains 626 bytes
 avrdude: reading on-chip flash data:
 
-Reading | ################################################## | 100% 0.08s
+Reading | ################################################## | 100% 0.07s
 
 avrdude: verifying ...
 avrdude: 626 bytes of flash verified
@@ -49,5 +49,5 @@ avrdude done.  Thank you.
 Finished building: avrdudedummy
  
 
-09:50:21 Build Finished. 0 errors, 0 warnings. (took 2s.88ms)
+19:42:26 Build Finished. 0 errors, 0 warnings. (took 2s.291ms)
 

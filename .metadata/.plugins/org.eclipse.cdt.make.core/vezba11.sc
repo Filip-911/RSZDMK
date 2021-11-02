@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
-            
+                
+    
     
     <instance id="de.innot.avreclipse.configuration.app.release.962579786;de.innot.avreclipse.configuration.app.release.962579786.;de.innot.avreclipse.tool.compiler.winavr.app.release.770317174;de.innot.avreclipse.compiler.winavr.input.447940409">
-                        
+                                
+        
         
         <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
             <includePath path="c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include"/>
@@ -130,9 +132,11 @@
             <definedSymbol symbol="F_CPU=16000000UL"/>
             <definedSymbol symbol="__AVR_ATmega328P__=1"/>
         </collector>
-                    
+                            
+    
     
     </instance>
-        
+            
+
 
 </scannerInfo>

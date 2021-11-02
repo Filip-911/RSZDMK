@@ -1,8 +1,10 @@
-09:37:25 **** Incremental Build of configuration Release for project Sef ****
+11:12:16 **** Incremental Build of configuration Release for project Sef ****
 make all 
 Building file: ../main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:42: warning: enumeration value 'UNLOCKED' not handled in switch
 Finished building: ../main.c
  
 Building target: Sef.elf
@@ -24,10 +26,10 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    1670 bytes (5.1% Full)
+Program:    1548 bytes (4.7% Full)
 (.text + .data + .bootloader)
 
-Data:         71 bytes (3.5% Full)
+Data:         67 bytes (3.3% Full)
 (.data + .bss + .noinit)
 
 
@@ -46,26 +48,26 @@ avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
 avrdude: erasing chip
 avrdude: reading input file "Sef.hex"
 avrdude: input file Sef.hex auto detected as Intel Hex
-avrdude: writing flash (1670 bytes):
+avrdude: writing flash (1548 bytes):
 
-Writing | ################################################## | 100% 0.27s
+Writing | ################################################## | 100% 0.25s
 
-avrdude: 1670 bytes of flash written
+avrdude: 1548 bytes of flash written
 avrdude: verifying flash memory against Sef.hex:
 avrdude: load data flash data from input file Sef.hex:
 avrdude: input file Sef.hex auto detected as Intel Hex
-avrdude: input file Sef.hex contains 1670 bytes
+avrdude: input file Sef.hex contains 1548 bytes
 avrdude: reading on-chip flash data:
 
-Reading | ################################################## | 100% 0.21s
+Reading | ################################################## | 100% 0.19s
 
 avrdude: verifying ...
-avrdude: 1670 bytes of flash verified
+avrdude: 1548 bytes of flash verified
 
 avrdude done.  Thank you.
 
 Finished building: avrdudedummy
  
 
-09:37:29 Build Finished. 0 errors, 0 warnings. (took 3s.594ms)
+11:12:19 Build Finished. 0 errors, 1 warnings. (took 3s.152ms)
 

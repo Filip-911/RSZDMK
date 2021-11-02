@@ -6,9 +6,11 @@
  */
 #include <stdint.h>
 #include <math.h>
-#include "usart.h"
-#include "PLS7.h"
+#include "../usart/usart.h"
+#include "../PLS7/PLS7.h"
 #include <string.h>
+#include <stdio.h>
+#include <avr/pgmspace.h>
 
 #define ITERATIVE 0
 #define FORMULA 1
@@ -53,7 +55,6 @@ int16_t SumGeo(int16_t first_element, int16_t ratio, int16_t n, int8_t mode)
 	}
 	return sum;
 }
-
 
 int main(void)
 {

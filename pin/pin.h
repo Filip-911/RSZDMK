@@ -46,13 +46,16 @@ pinu
 unsigned long calculateHalfPeriod(unsigned long period);
 /**
  * pinSetValue - Funkcija koja postavlja vrednost na pinu
-Razvoj softvera za digitalne mikrokontrolere
+ *
  * @param port - ulaz tipa unsigned char - Port na kojem je pin ciju
 vrednost potrebno postaviti
+
  * @param pin - ulaz tipa unsigned char - Pin ciju je vrednost potrebno
 postaviti
+
  * @param value - ulaz tipa unsigned char - Vrednost koju je potrebno
 postaviti na pin
+
  * @return Nema povratnu vrednost
  */
 void pinSetValue(unsigned char port, unsigned char pin, unsigned char value);

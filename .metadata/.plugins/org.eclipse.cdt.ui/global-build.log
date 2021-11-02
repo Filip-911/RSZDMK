@@ -1,41 +1,31 @@
-10:24:46 **** Incremental Build of configuration Release for project opt ****
+13:27:40 **** Incremental Build of configuration Release for project zad10.2 ****
 make all 
-Building file: ../opt.c
+Building file: ../main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"opt.d" -MT"opt.o" -c -o "opt.o" "../opt.c"
-../opt.c: In function 'racun':
-../opt.c:22: warning: control reaches end of non-void function
-Finished building: ../opt.c
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:73: warning: implicit declaration of function 'sprintf'
+../main.c:73: warning: incompatible implicit declaration of built-in function 'sprintf'
+../main.c:74: warning: pointer targets in passing argument 1 of 'usartPutString' differ in signedness
+../main.c: In function 'SumGeo':
+../main.c:38: warning: 'i' may be used uninitialized in this function
+Finished building: ../main.c
  
-Building target: opt.elf
+Building target: zad10.2.elf
 Invoking: AVR C Linker
-avr-gcc -Wl,-Map,opt.map -mmcu=atmega16 -o "opt.elf"  ./opt.o   
-Finished building target: opt.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S opt.elf  >"opt.lss"
-Finished building: opt.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex opt.elf  "opt.hex"
-Finished building: opt.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex opt.elf  "opt.eep"
-Finished building: opt.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega16 opt.elf
-AVR Memory Usage
-----------------
-Device: atmega16
-
-Program:     760 bytes (4.6% Full)
-(.text + .data + .bootloader)
-
-Data:          2 bytes (0.2% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
+avr-gcc -Wl,-Map,zad10.2.map -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\timer0\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\PLS7\Release" -L"C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release" -mmcu=atmega328p -o "zad10.2.elf"  ./main.o   -ltimer0 -lPLS7 -lusart
+C:\Users\Korisnik\Desktop\Filip\GitShieeeet\RSZDMK\usart\Release\libusart.a(usart.o): In function `usartPutString':
+usart.c:(.text.usartPutString+0x0): multiple definition of `usartPutString'
+./main.o:main.c:(.text.usartPutString+0x0): first defined here
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(inverse.o): In function `inverse':
+(.text.avr-libc.fplib+0xc): relocation truncated to fit: R_AVR_13_PCREL against symbol `__divsf3' defined in .text section in c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_div_sf.o)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(log.o): In function `log':
+(.text.avr-libc.fplib+0x46): relocation truncated to fit: R_AVR_13_PCREL against symbol `__addsf3' defined in .text section in c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(log.o): In function `log':
+(.text.avr-libc.fplib+0x4e): relocation truncated to fit: R_AVR_13_PCREL against symbol `__addsf3' defined in .text section in c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(log.o): In function `log':
+(.text.avr-libc.fplib+0x6a): relocation truncated to fit: R_AVR_13_PCREL against symbol `__floatsisf' defined in .text section in c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_si_to_sf.o)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(modf.o): In function `modff':
+(.text.avr-libc.fplib+0x3e): relocation truncated to fit: R_AVR_13_PCREL against symbol `__subsf3' defined in .text section in c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+make: *** [zad10.2.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
