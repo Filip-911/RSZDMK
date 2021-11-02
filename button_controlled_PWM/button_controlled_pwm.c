@@ -67,7 +67,7 @@ while (1)
 				printf("Can't go lower than 0%");
 		}
 	}
-	if(!buttonState(fp, str, num_of_bytes, 0))
+	else if(!buttonState(fp, str, num_of_bytes, 0))
 		sd = 1;
 	
 	// ako je pritisnut taster 1 uvecaj pwm
@@ -84,7 +84,7 @@ while (1)
 				printf("Can't go higher than 100%");
 		
 		}
-	if(!buttonState(fp, str, num_of_bytes, 1))
+	else if(!buttonState(fp, str, num_of_bytes, 1))
 		sd = 1;
 	
 	free (str);
